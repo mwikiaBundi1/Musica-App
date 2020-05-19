@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/index.css')}}">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@1,700&display=swap" rel="stylesheet"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../static/css/index.css"> 
+<!-- Content block -->
+
+   
+ 
+
+
+
+
+
+
+
+
+
+
+{% for post in posts%}
+
+<article class="media content-section" style="margin-top: 20px;">
+
+    <div class="media-body">
+        <div class="article-metadata">
+
+
+            
+         
+
+
+        </div>
+
+    </div>
+
+
+</article>
+
+
+
+{% endfor %}
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>
+    </title>
+
+    </head>
+    <body>
+       <!-- <div class="textbox">
+            <ul>
+                <li><a href="#"><b>Home</b></a></li>
+                <li><a href="#">Albums</a></li>
+                <li><a href="#">Videos</a></li>
+                <li><a href="#">Profile </a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </div>-->
+        <div class="cover">
+            <div class="subcover">
+            </div>
+            <div class="coverimage">
+                <img src="https://i.pinimg.com/564x/fd/e5/e6/fde5e6e5599d88e98819caf6e0d35c96.jpg" width="250" height="300">
+            </div>
+            <div class="text">
+                <div class="brown " style="margin-top: 20px;">
+                <h1 style="margin-bottom: 20px;"> Confident </h1><br><br>
+            </div>
+            <div>
+                <h2>Demi Lavato</h2>
+            </div>
+            </div>
+            <div class="line">
+                <i class="fa fa-circle" aria-hidden="true"></i>
+            </div>
+            <div class="number">
+                <h3>3:43</h3>
+                <h4>6:40</h4>
+            </div>
+            <div class="player">
+                <i class="fa fa-pause-circle-o" aria-hidden="true"></i>
+                <div class="foward">
+                    <i class="fa fa-forward" aria-hidden="true"></i>
+                </div>
+                    <dic class="backward">
+                        <i class="fa fa-backward" aria-hidden="true"></i>
+                    </div>
+                    <div class="retweet">
+                        <i class="fa fa-retweet" aria-hidden="true"></i>
+                    </div>
+                     <div class="repeat">
+                        <i class="fa fa-repeat" aria-hidden="true"></i>
+                    </div>
+                   
+            </div>
+             <div class="context">
+                <h5> Without <font>Music ,Life </font></br>would be a
+                <font> Mistake</font></h5>
+                <h6>Music is the sound produced that is pleasing to the ears. It is also a form of Art.Music is a beautiful form of expression. It is that form of art that evolves continuously. Everyone has some form of passion towards music within them, either in the form of a desire to learn or listening for relaxation. To us music is life</h6>
+            </div>
+            <div class="box">
+                <button action="" method="get">
+              <a href= "{{url_for('music')}}" style="color: white;">  <button class="btn btn-outline-primary" style="margin-left: 270px;margin-top: 30px;color: white;" > Learn More</a>  </button>
+                </form>
+
+            </div>
+        </div>
+    </body>
+</html>
+
+
+{% endblock %}

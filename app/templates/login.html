@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+  body {
+   background-image: url('https://c4.wallpaperflare.com/wallpaper/71/305/237/sunset-the-sun-bridge-music-silhouette-hd-wallpaper-preview.jpg');
+   background-repeat: no-repeat;
+   background-size: cover;
+ } 
+ a {
+    position: relative;
+    display: inline-block;
+    padding: 15px 30px;
+    color: #2196f3;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    overflow: hidden;
+    transition: 0.2s;
+}
+ a:hover {
+    color: #255784;
+    background: #2196f3;
+    box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3,0 0 80px #2196f3;
+    /* transition-delay: 1s; */
+ }
+</style>
+<body>
+<link rel="stylesheet" href="{{url_for('static' ,filename='css/style.css')}}">
+<div class="row">
+  <div class="col-lg-3"></div>
+<div class="col-lg-4" style="margin-left: 100px;">
+<div class="content-section"><br><br>
+
+    <form action="" method="post">
+      {{form.hidden_tag()}}
+
+      <fieldset class="form-group">
+        <legend class="border-bottom-mb-4" style="font-size: 230%;">SIGN IN HERE</legend>
+         
+         <div class="form-group" style="color: white;">
+            {{form.email.label(class="form-control-label")}}
+            {% if form.email.errors%}
+            {{form.email(class="form-control form-control-lg is-invalid")}}
+               <div class="invalid-feedback">
+               {% for error in form.email.errors%}
+
+                 {{error}}
+                 {%endfor%}
+               </div>
+               {%else%}
+               {{form.email(class="form-control form-control-lg")}}
+               {% endif %}
+            
+      </div>
+      <div class="form-group" style="color: white;">
+        {{form.password.label(class="form-control-label")}}
+        {{form.password(class="form-control form-control-lg")}}
+  </div>
+  
+
+<div class="form-check">
+
+    {{form.remember(class = "form-check-input")}}
+    {{form.remember.label(class = "form-check-label")}}
+</div>
+<div class="form-group" style="color: white;">
+    
+    {{form.submit(class="btn btn-primary")}}
+</div>
+
+
+      </fieldset>
+
+    </form>
+</div>
+   <p class="text-muted">
+
+    <a href="{{url_for('register')}}"> Don't have an account <a>
+   </p>
+  </div>
+  <div class="col-lg-6  login" style="margin-top: 20px;">
+  
+<!--<img div = "login" src="{{url_for('static', filename = 'img/login.jpeg')}}" alt="" style="height: 300px; width: 500px;">-->
+  </div>
+  </div>
+</body>
+
+
+{% endblock %}

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <link rel="stylesheet" href="{{url_for('static' ,filename='css/style.css')}}">
+     <link rel="stylesheet" href="{{url_for('static', filename ='css/style.css')}}">
+     
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@1,700&display=swap" rel="stylesheet"> 
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+    <title>Music</title>
+
+   
+</head>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+          <a class="navbar-brand" href="{{url_for('main')}}" style="color: white;">Home</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!--<a class="navbar-brand" href="{{url_for('music')}}" style="color: white;">Music</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>-->
+         
+          {% if current_user.is_authenticated %}
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+              
+               <li class="nav-item">
+                <a class="nav-link" href="{{url_for('music')}}" style="color: white;"> Music</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('profile')}}" style="color: white;"> Profile</a>
+              </li>
+             
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('logout')}}" style="color: white;"> Logout</a>
+              </li>
+            
+              {% else %}
+              <li class="nav-item active">
+                <a class="nav-link" href="{{url_for('login')}}" style="color: white;">Login <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('register')}}" style="color: white;"> Register</a>
+              </li>
+            
+              
+              {%endif%}
+            </ul>
+          
+          </div>
+        </nav>
+       
+
+        {%block title%}
+
+      
+
+        {%endblock%}
+
+  </head>
+  <body class="text-center" >
+    
+        <div class="container-fluid">
+         
+
+    {% with messages = get_flashed_messages(with_categories=true)%}
+
+    {%if messages%}
+
+    {% for category,message in messages %}
+
+    <div class=" alert alert-{{category}}">
+
+      {{message}}
+    </div>
+
+    {%endfor%}
+    {%endif%}
+    {%endwith%}
+
+    {%block content%}
+    {% endblock %}
+</div>
+    
+   

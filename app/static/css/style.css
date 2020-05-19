@@ -1,0 +1,19 @@
+.row1{
+    height: 100px;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+}
+
+#login{
+    height: 500px;
+    width: 500px;
+}
+
+#spanned{
+  background-image: url(../img/p5.jpeg);
+}
+.overlay {
+  background-color: rgba(23, 25, 34, 0.589);
+  height: 100%;
+}

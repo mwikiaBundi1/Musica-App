@@ -1,0 +1,148 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@1,700&display=swap" rel="stylesheet"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../static/css/music.css">
+<div class="column">
+                                                  
+
+    <div class="box has-background-black-ter ">
+        <div class="card-image material_shadow_five">
+            <figure class="image is-square">
+                <img src="https://i.pinimg.com/originals/3a/f0/e5/3af0e55ea66ea69e35145fb108b4a636.jpg" alt="Image">
+                <!-- <img src="https://assets.audiomack.com/younes95220/5bf2e5b3b9514d7eda82912352fd5ae293d6c495a7c050962d5f90db3c3a1c5c.jpeg?width=260&height=260&max=true" alt="Image"> -->
+            </figure>
+
+            <div class="card-content ">
+             
+                <div class="content">
+                    <nav class="level has-text-white">
+
+                        <div class="level-item has-text-centered">
+                            
+                        </div>
+
+
+                    </nav>
+
+
+
+                </div>
+
+              
+
+            </div>
+
+
+
+
+
+    
+    
+
+ 
+  <hr>
+    {%for post in posts%}
+   
+   
+    <small class="article-content">posted on;{{post.date.strftime('%B %d,%Y')}}</small>
+    <small class="article-content">posted on;{{post.rel.username}}</small>
+ 
+   
+    <hr>
+    
+    {%endfor%}
+    
+    </div>
+    
+    </div>
+    
+    
+    </article>
+                               
+    <article class="media content-section" style="margin-top: 20px;">
+
+        <div class="media-body">
+        <div class="article-metadata"><br><br>
+        
+        
+            <h4>Comments</h4>
+    
+      <hr>
+        {%for comment in comments%}
+       
+       
+      
+        <p class="article-content">posted on;{{comment.name}}</p>
+     
+        <button class="btn btn-info btn-sm" style="margin-left: 100px; margin-top: 10px;"> <a href="{{url_for('update_commen',post_id = post.id,comment_id = comment.id)}}" style="color: white;">   Update</a></button>
+        <button class="btn btn-danger btn-sm" style="margin-left: 100px; margin-top: 10px;"> <a href="{{url_for('delete_commen',post_id = post.id,comment_id = comment.id)}}" style="color: white;">   Delete</a></button>
+        <hr>
+        
+        {%endfor%}
+        
+        </div>
+        
+        </div>
+        
+        
+        </article>                      
+                            
+                            
+    </div>
+                             
+                            
+                            
+</div>   
+</div>              
+                            
+                            
+                            
+                           
+                            
+                            <div class="content-section">
+                            
+                                <form action="" method="post">
+                                    {{form.hidden_tag()}}
+                            
+                                    <fieldset class="form-group">
+                                        <legend class="border-bottom-mb-4"> Add Comment</legend>
+                            
+                                       
+                                            
+                                        <div class="form-group">
+                                            
+                                            {% if form.name.errors%}
+                                            {{form.name(class="form-control form-control-lg is-invalid")}}
+                                            <div class="invalid-feedback">
+                                                {% for error in form.name.errors%}
+                            
+                                                {{error}}
+                                                {%endfor%}
+                                            </div>
+                                            {%else%}
+                                            {{form.name(class="form-control form-control-lg")}}
+                                            {% endif %}
+                            
+                                        </div>
+                            
+                            
+                            
+                                        <div class="form-group">
+                            
+                                            {{form.submit(class="btn btn-outline-primary")}}
+                                        </div>
+                            
+                            
+                                    </fieldset>
+                            
+                                </form>
+                            </div>
+                            </div>
+                            
+                            
+                    </div>
+
+{%endblock%}

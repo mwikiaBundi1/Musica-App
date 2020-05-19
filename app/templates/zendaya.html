@@ -1,0 +1,102 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../static/css/music.css">
+<div class="column">
+
+
+    <div class="box has-background-black-ter ">
+        <div class="card-image material_shadow_five">
+            <figure class="image is-square">
+                <image style="float: left;" src="{{url_for('static',filename='images/zend.jpg')}}"></image>
+                <!-- <img src="https://assets.audiomack.com/younes95220/5bf2e5b3b9514d7eda82912352fd5ae293d6c495a7c050962d5f90db3c3a1c5c.jpeg?width=260&height=260&max=true" alt="Image"> -->
+            </figure>
+
+            <h3>Comments</h3>
+                <hr>
+                {%for comment in comments%}
+                    
+                <article class="media content-section" style="margin-top: 20px;">
+                    <img src="{{url_for('static',filename = 'img/' + comment.rep.image_file)}}" alt="" srcset=""
+                        class="rounded-circle" style="height: 100px;width: 100px;">
+                    <div class="media-body">
+                        <div class="article-metadata">
+                            <small class="text-muted"> posted on {{comment.date.strftime('%B %d,%Y')}}</small>
+                            <small> by {{comment.rep.username}} </small>
+                            <p class="article-content">{{comment.name}}</p>
+                            {% if comment.rep == current_user%}
+                            <button class="btn btn-info btn-sm" style="margin-left: 100px; margin-top: 10px;"> <a
+                                    href="{{url_for('update_comment',post_id = post.id,comment_id = comment.id)}}"
+                                    style="color: white;"> Update</a></button>
+                            <button class="btn btn-danger btn-sm" style="margin-left: 100px; margin-top: 10px;"> <a
+                                    href="{{url_for('delete_comment',post_id = post.id,comment_id = comment.id)}}"
+                                    style="color: white;"> Delete</a></button>
+                            {% endif %}
+                            <hr >
+
+                            {%endfor%}
+
+                        </div>
+
+                    </div>
+
+
+                </article>
+
+
+
+
+
+
+                <div class="row">
+
+
+                    <div class="col-lg-9" style="margin-left: 60px;">
+
+                        <div class="content-section" style="margin-top: 50px;">
+
+                            <form action="" method="post">
+                                {{form.hidden_tag()}}
+
+                                <fieldset class="form-group">
+                                    <legend class="border-bottom-mb-4"> Add Comment</legend>
+
+
+
+                                    <div class="form-group">
+
+                                        {% if form.name.errors%}
+                                        {{form.name(class="form-control form-control-lg is-invalid")}}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.content.errors%}
+
+                                            {{error}}
+                                            {%endfor%}
+                                        </div>
+                                        {%else%}
+                                        {{form.name(class="form-control form-control-lg")}}
+                                        {% endif %}
+
+                                    </div>
+
+
+
+                                    <div class="form-group">
+
+                                        {{form.submit(class="btn btn-outline-primary")}}
+                                    </div>
+
+
+                                </fieldset>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {%endblock%}
